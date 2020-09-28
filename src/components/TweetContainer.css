@@ -1,0 +1,31 @@
+.tweet__container {
+  border:1px solid black;
+  border-radius: 1px;
+}
+
+.user__details{
+  display: flex;
+  margin:10px;
+}
+
+.user__details h4 {
+  margin-left: 10px;
+}
+.user__details h4,p {
+  
+  padding:2px;
+}
+
+.tweet__area {
+  margin-top: -29px;
+  margin-left: 20px;
+  
+}
+
+.tweet__area p {
+  margin-left: 40px;
+}
+
+.tweet__icons{
+  display: flex;
+}

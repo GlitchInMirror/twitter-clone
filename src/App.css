@@ -1,0 +1,5 @@
+button,input {
+
+  outline: 0px transparent !important;   /* to remove black border around buttons on click in chrome */
+
+}
