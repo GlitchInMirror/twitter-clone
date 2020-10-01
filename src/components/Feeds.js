@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "./Feeds.css"
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
@@ -11,6 +11,19 @@ import TweetContainer from"./TweetContainer";
 
 
 function Feeds() {
+
+  const [tweet,setTweet] =  useState(null);
+
+  const changeHandler = () => {
+    setTweet();
+ }
+  const submitHandler = (e)  => {
+    e.preventDefault();
+
+
+  }
+
+
   return (
 
 
@@ -103,7 +116,9 @@ function Feeds() {
             <div className="post__tweet">
 
                 <Avatar className="user__pic" alt="" src="/static/images/ava1.png" />
-                <textarea cols="45" className="post__area" placeholder="What's happening?" />
+                <textarea cols="45" className="post__area" placeholder="What's happening?" 
+                value={tweet}
+                onChange={changeHandler}/>
             </div>
           <div className="share__icons">
                 
@@ -111,11 +126,17 @@ function Feeds() {
                 <IconButton><GifOutlinedIcon /></IconButton>
                 <IconButton><InsertChartIcon /></IconButton>
                 <IconButton><InsertEmoticonIcon /></IconButton>
-                <button className="btn__post">Tweet</button>
+                <button onclick={submitHandler} className="btn__post">Tweet</button>
           </div>
 
 
-          <TweetContainer/>
+          <TweetContainer
+          id="1"
+          name="Hello"
+          username="@Hello"
+          tweet={tweet}
+          
+          />
 
         <TweetContainer />
 
