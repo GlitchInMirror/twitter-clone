@@ -2,21 +2,21 @@ import React from 'react'
 import "./TweetContainer.css"
 import { Avatar } from '@material-ui/core';
 
-function TweetContainer() {
+function TweetContainer({id,name,username,tweet}) {
   return (
     <div className="tweet__container">
 
 
       
-      <div className="user__details">
+      <div key={id} className="user__details">
           <Avatar  alt="" src="/static/images/ava1.png" />
-            <h4>Hello User</h4>
-            <p>@hello</p>
+            <h4>{name}</h4>
+            <p>{username}</p>
             <p>.</p>
             <p>Date</p>
       </div>
       <div className="tweet__area">
-        <p>Hello this is the first tweet</p>
+        <p>{tweet}</p>
       </div>
 
       
