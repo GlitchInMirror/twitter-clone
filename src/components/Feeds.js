@@ -10,14 +10,20 @@ import SearchIcon from '@material-ui/icons/Search';
 import TweetContainer from './TweetContainer';
 import IconList from './IconList';
 
-const Feeds = () => {
-  const [tweet, setTweet] = useState(null);
+// Redux
+import { connect } from 'react-redux'
+import { saveTweet } from '../reducers/tweet/actions'
 
-  const changeHandler = () => {
-    setTweet();
+
+const Feeds = ({ saveTweet, saveSuccess }) => {
+  const [tweet, setTweet] = useState('');
+
+  const changeHandler = (e) => {
+    setTweet(e.target.value);
   };
   const submitHandler = (e) => {
     e.preventDefault();
+    saveTweet(tweet)
   };
 
   return (
@@ -103,7 +109,7 @@ const Feeds = () => {
           <IconButton>
             <InsertEmoticonIcon />
           </IconButton>
-          <button onclick={submitHandler} className="btn__post">
+          <button onClick={submitHandler} className="btn__post">
             Tweet
           </button>
         </div>
@@ -125,11 +131,11 @@ const Feeds = () => {
           />
         </div>
 
-        <div class="trending__news">
+        <div className="trending__news">
           <h3>Trending News</h3>
         </div>
 
-        <div class="other__people">
+        <div className="other__people">
           <h3>Other People</h3>
         </div>
       </div>
@@ -137,4 +143,14 @@ const Feeds = () => {
   );
 }
 
-export default Feeds;
+const mapStateToProps = ({ tweet }) => {
+  return {
+    saveSuccess: tweet.saveSuccess,
+  }
+}
+
+const mapDispatchToProps = {
+  saveTweet,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feeds);
